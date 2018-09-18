@@ -1,5 +1,7 @@
 <?php
+include('inc/head.php');
 require_once('inc/functions.php'); // load file containing all of the functions we'll use to upload the csv, make directories, get XML data, etc...
+
 
 if(isset($_FILES['csv_file'])): // check to make sure a csv file has been uploaded. If not none of the following functions will run.
 
@@ -54,3 +56,7 @@ endif;
 	</fieldset>
 	<input type="submit" value="submit" />
 </form>
+
+<?php
+include('inc/footer.php');
+?>

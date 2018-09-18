@@ -2,7 +2,7 @@
 
 class makeXML 
 {
-	// establish variables in the scope of the getCSV class to pass between different functions we will use to save CSV, create a directory for our XML, and create our XML files...
+	// establish variables to pass between different functions we will use to save CSV, create a directory for our XML, and create our XML files...
 
 	protected $_file; // variable for csv file, we'll use this to get the file name, and get the data from the file
 	protected $_directory; // this will be the unique directory we'll establish to save all of our XML files.
@@ -40,6 +40,7 @@ class makeXML
 
 			$metadata = array();
 			$row = 0;
+			$counter = 0;
 			$flag = true;
 			$schema_uri = 'http://www.loc.gov/mods/v3';
 			
@@ -47,6 +48,13 @@ class makeXML
 
 			if( ( $handle = fopen($csv_file, 'r')) !== FALSE) {
 				while(($data = fgetcsv($handle, 0, ',', '"', '"')) !== FALSE) {
+
+					if($row == 0) {
+						$headerValues = $data;
+
+						var_dump($data[0]);
+
+					}
 					
 					if($flag) { $flag = false; continue; }
 					$num = count($data);
